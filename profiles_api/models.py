@@ -8,7 +8,7 @@ class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
 
 
-    def create_user(self,email,name,password=None):
+    def create_user(self, email, name, password=None):
         """Create a new user Profile"""
         if not email:
             raise ValueError('User must have an email adress')
@@ -21,7 +21,7 @@ class UserProfileManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self,email,name,password):
+    def create_superuser(self, name, email, password):
         """create and save a new superuser with given details"""
         user = self.create_user(email, name, password)
 
@@ -44,7 +44,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     objects = UserProfileManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['NAME']
+    REQUIRED_FIELDS = ['name']
 
     def get_full_name(self):
         """Retrieve full name of user"""
